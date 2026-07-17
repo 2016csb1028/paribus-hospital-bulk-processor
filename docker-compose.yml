@@ -1,0 +1,10 @@
+services:
+  bulk-processor:
+    build: .
+    ports:
+      - "8000:8000"
+    environment:
+      HOSPITAL_API_BASE_URL: ${HOSPITAL_API_BASE_URL:-https://hospital-directory.onrender.com}
+      BULK_CONCURRENCY: ${BULK_CONCURRENCY:-10}
+      MAX_RETRIES: ${MAX_RETRIES:-3}
+    restart: unless-stopped
